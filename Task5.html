@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff758c, #ff7eb3,#6dd5ed, #2193b0,#E13680, #BC3);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    input, button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input {
+      width: 200px;
+    }
+
+    button {
+      background: #fff;
+      color: #ff4b2b;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #ffe8e8;
+    }
+
+    .weather-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 90%;
+      animation: fadeIn 2s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .weather-box img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .weather-box h2 {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>  Weather Finder🌤️</h1>
+  <input type="text" id="locationInput" placeholder="Enter a location">
+  <button onclick="getWeather()">Get Weather</button>
+
+  <div class="weather-box" id="weather">
+    <p>Enter a city to see the weather.</p>
+  </div>
+
+  <script>
+    async function getWeather() {
+      const apiKey = '6f1e97e5a5c64c9fa5c133725250407';
+      const location = document.getElementById('locationInput').value || 'London';
+      const weatherBox = document.getElementById('weather');
+
+      try {
+        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`);
+        const data = await response.json();
+
+        if (data.error) {
+          weatherBox.innerHTML = `<p>${data.error.message}</p>`;
+        } else {
+          weatherBox.innerHTML = `
+            <img src="${data.current.condition.icon}" alt="Weather icon">
+            <h2>${data.location.name}, ${data.location.country}</h2>
+            <p><strong>Temperature:</strong> ${data.current.temp_c} °C</p>
+            <p><strong>Condition:</strong> ${data.current.condition.text}</p>
+            <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
+            <p><strong>Wind Speed:</strong> ${data.current.wind_kph} kph</p>
+            <p><strong>Air Quality (PM2.5):</strong> ${data.current.air_quality.pm2_5.toFixed(2)}</p>
+          `;
+        }
+      } catch (err) {
+        weatherBox.innerHTML = '<p>Failed to fetch weather data. Please check your internet connection.</p>';
+      }
+    }
+  </script>
+</body>
+</html>
