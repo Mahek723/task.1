@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #E13680, #BC3);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: url('https://source.unsplash.com/1600x900/?technology,web') no-repeat center center/cover;
+      color: #fff;
+      padding: 2rem;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      background-color: rgba(0,0,0,0.4);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    nav {
+      background: #111;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    #about, #projects, #contact {
+      background: #222;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #ffdd59;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project {
+      background: #333;
+      padding: 1rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .project:hover {
+      transform: scale(1.05);
+      background-color: #444;
+    }
+
+    .footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hi, I'm Mahek</h1>
+    <p>Creative Web Developer | HTML, CSS, JavaScript | Passionate about building interactive web experiences.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <div class="content">
+      <h2>About Me</h2>
+      <p>I am a first-year B.Tech Computer Science student passionate about web development . With a strong foundation in HTML, CSS, and JavaScript, I enjoy creating user-friendly and responsive web applications. I'm also exploring React, Git, and other web technologies to further enhance my skills.My goal is to grow as a developer by constantly learning new technologies and contributing to meaningful projects.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="content">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project">
+          <h3>Portfolio Website</h3>
+          <p>A personal portfolio site to showcase my skills and projects using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project">
+          <h3>Tic-Tac-Toe Game</h3>
+          <p>Fun and interactive game with responsive layout.it's a simple two-player tic-tac-toe game implemented with JavaScript logic and CSS animations..</p>
+        </div>
+        <div class="project">
+          <h3>Weather App</h3>
+          <p>Fetches live weather data using APIs and displays it beautifully.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="content">
+      <h2>Contact</h2>
+      <p>Email: pathanmhk806@gamil.com</p>
+      <p>LinkedIn: linkedin.com/in/Mahek</p>
+      <p>GitHub: github.com/yourusername</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Thank You!!</p>
+  </footer>
+
+</body>
+</html>
